@@ -4,7 +4,6 @@ const bodyParser = require("body-parser");
 var cors = require('cors')
 const dbConnect = require("./db/dbConnect");
 const fileRouter = require("./routes/fileRoute");
-const searchRouter = require("./routes/searchRouter");
 const commentsRouter = require("./routes/commentsRouter");
 const app = express();
 const port = 5000;
@@ -23,7 +22,6 @@ app.get("/", (req, res) => {
 
 //routes
 app.use('/file', fileRouter)
-app.use('/search', searchRouter)
 app.use('/comments', commentsRouter)
 
 //starting server

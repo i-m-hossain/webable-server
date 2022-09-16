@@ -1,7 +1,6 @@
 const db = require("../db/db");
 var mysql = require("mysql");
 const fs = require("fs");
-const { getComments } = require("../lib/getComments");
 const handleFileUpload = (req, res) => {
     const fileName = req.file.filename;
     const data = require(`../uploads/${fileName}`);
@@ -15,7 +14,7 @@ const handleFileUpload = (req, res) => {
         const sqlComments = "SELECT * FROM comments";
         db.query(sqlComments, (err, result) => {
             if (err) throw err;
-            
+
             //comparing the values between database comments and uploaded comments, returning only differences
             const queryArrForInsert = [
                 data.comments

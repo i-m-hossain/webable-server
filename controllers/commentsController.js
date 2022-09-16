@@ -12,7 +12,7 @@ exports.handleGetAllComments = (req, res) => {
 exports.handleGetSearchedComments = (req, res) => {
     const searchTerm = req.query.searchTerm;
     const sql = `SELECT * FROM comments
-    WHERE body LIKE '%${searchTerm}%' `;
+    WHERE body LIKE '%${searchTerm}%' LIMIT 20`;
     db.query(sql, (err, result) => {
         if (err) throw err;
         const comments = getComments(result)
